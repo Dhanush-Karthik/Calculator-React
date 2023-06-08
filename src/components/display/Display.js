@@ -1,6 +1,11 @@
+import { useContext } from "react";
 import "./Display.css";
+import { ExpContext } from "../calculator/Calculator";
 
-let Display = () => {
+
+const Display = () => {
+    let exp = useContext(ExpContext);
+    console.log(exp);
     return(
         <input className="display"/>
     );

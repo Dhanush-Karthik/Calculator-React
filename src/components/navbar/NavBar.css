@@ -30,3 +30,34 @@ a{
     color: #000;
 
 }
+@media only screen and (max-width:738px){
+    nav{
+        margin: 0px;
+        padding: 0px;
+        padding-top: 5px;
+        display:flex;
+        width: 100vw;
+        flex-direction: column;
+        justify-content: center;
+    }
+    nav h1{
+        margin-bottom: 3px;
+    }
+    .calculator{
+        margin-top: 10px;
+    }
+    a{
+        padding: 8px 10px;
+    }
+}
+@media only screen and (max-width:388px){
+    nav ul{
+        display: none;
+    }
+    nav ul .hidden{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+}

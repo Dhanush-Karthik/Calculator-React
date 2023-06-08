@@ -1,13 +1,19 @@
+import { createContext, useState } from "react";
 import Display from "../display/Display";
 import NumberPad from "../numberpad/NumberPad";
 import "./Calculator.css"
-let Calculator = () => {
+export const ExpContext = createContext();
+const Calculator = () => {
+    const [exp,setExp] = useState("working");
+      
     return(
-        <div className="calculator">
-            Casio
-            <Display />
-            <NumberPad />
-        </div>
+        <ExpContext.Provider value={exp}>
+            <div className="calculator">
+                Casio
+                <Display />
+                <NumberPad />
+            </div>
+        </ExpContext.Provider>
     );
 }
 
