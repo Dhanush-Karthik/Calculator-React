@@ -4,10 +4,10 @@ import { ExpContext } from "../calculator/Calculator";
 
 
 const Display = () => {
-    let exp = useContext(ExpContext);
-    console.log(exp);
+    let {exp,setExp} = useContext(ExpContext);
+    
     return(
-        <input className="display"/>
+        <input className="display" value={exp}/>
     );
 }
 
