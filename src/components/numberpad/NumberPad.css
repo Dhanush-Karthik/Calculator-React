@@ -1,0 +1,40 @@
+.number-pad{
+    display: grid;
+    cursor: pointer;
+    grid-template-columns: repeat(4,50px);
+    column-gap: 10px;
+    width: 230px;
+    height: 250px;
+}
+
+.number-pad-bottom{
+    width: 230px;
+    display: flex;
+}
+.button{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    border-radius: 20%;
+    background-color: #000;
+    align-items: center;
+    transition: 0.5s;
+}
+.number-pad-0{
+    width: 110px;
+    display: flex;
+    /* margin-left: 10px; */
+}
+.number-pad-dot{
+    margin-left: 10px;
+}
+.number-pad-equal{
+    margin-left: 10px;
+}
+.number-pad-item-spl{
+    background-color: gray;
+}
+.number-pad-item-op{
+    background-color: rgb(33, 147, 241);
+}

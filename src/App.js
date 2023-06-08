@@ -1,13 +1,16 @@
-import Calculator from "./components/Calculator";
+import Calculator from "./components/calculator/Calculator";
+import NavBar from "./components/navbar/NavBar";
 import "./App.css";
 
-function App(){
-    return(
-        <div className="window">
-            <h1>Hello World!!</h1>
-            <Calculator/>
-        </div>
-    );
+function App() {
+  return (
+    <div>
+      <NavBar />
+      <div className="window">
+        <Calculator />
+      </div>
+    </div>
+  );
 }
 
 export default App;
