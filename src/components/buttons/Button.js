@@ -5,7 +5,7 @@ import { ExpContext } from '../calculator/Calculator';
 
 const Button = ({value,className}) => {
   const {exp,setExp} = useContext(ExpContext);
-
+  
   const handleClick = (e)=>{
     let val = e.target.textContent;
 
