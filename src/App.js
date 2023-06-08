@@ -1,10 +1,11 @@
-import NumberKey from "./components/NumberKey";
+import Calculator from "./components/Calculator";
+import "./App.css";
 
 function App(){
     return(
-        <div>
+        <div className="window">
             <h1>Hello World!!</h1>
-            <NumberKey/>
+            <Calculator/>
         </div>
     );
 }
