@@ -4,7 +4,7 @@ import NumberPad from "../numberpad/NumberPad";
 import "./Calculator.css"
 export const ExpContext = createContext();
 const Calculator = () => {
-    const [exp,setExp] = useState("");
+    const [exp,setExp] = useState("0");
       
     return(
         <ExpContext.Provider value={{exp,setExp}}>

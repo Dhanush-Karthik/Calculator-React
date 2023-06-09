@@ -3,8 +3,6 @@ import Button from "../buttons/Button";
 import "./NumberPad.css";
 import { ExpContext } from "../calculator/Calculator";
 
-
-
 let keys = [
   {
     value: "C",
@@ -80,19 +78,18 @@ let keys = [
   },
   {
     value: "=",
-    class: "number-pad-item number-pad-item-op"
-  }
+    class: "number-pad-item number-pad-item-op",
+  },
 ];
 
 let NumberPad = () => {
-
-  let {exp,setExp} = useContext(ExpContext);
+  let { exp, setExp } = useContext(ExpContext);
 
   return (
     <div>
       <div className="number-pad">
         {keys.map((key, index) => {
-            return <Button key={index} value={key.value} className={key.class} />;
+          return <Button key={index} value={key.value} className={key.class} />;
         })}
       </div>
     </div>
