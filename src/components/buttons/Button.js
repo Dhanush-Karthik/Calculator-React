@@ -1,9 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "./Button.css";
 import { ExpContext } from "../calculator/Calculator";
 
 const Button = ({ value, className }) => {
   const { exp, setExp } = useContext(ExpContext);
+
+  useEffect(() => {
+    setDeciFlag(exp);
+    console.log(isDecimal);
+  }, [exp]);
 
   let isPerformed = false;
   let lastOperation = "";
@@ -20,18 +25,14 @@ const Button = ({ value, className }) => {
 
   //sets decimal flag while deleting or evaluating
   const setDeciFlag = (val) => {
-    console.log("working")
-    if(val === "."){
-      isDecimal = true;
-      return;
-    }
-    if(isNaN(val)){
-      isDecimal = false;
-      return;
-    }
+    val = val.toString();
 
-    var i = exp.length - 1;
-    while (i >= 0 && exp.charAt(i) != ".") {
+    var i = val.length - 1;
+    while (i >= 0 && val.charAt(i) != ".") {
+      if(isNaN(val.charAt(i))){
+        isDecimal = false;
+        return;
+      }
       i--;
     }
     if (i === -1) {
@@ -72,9 +73,6 @@ const Button = ({ value, className }) => {
 
   //performs operation
   const calculate = (exp) => {
-
-    exp = exp.toString();
-    console.log(typeof exp);
 
     if (exp === "") {
       setExp("");
@@ -130,11 +128,32 @@ const Button = ({ value, className }) => {
     }
 
     setExp(values.pop());
-    setDeciFlag();
   }
 
   const handleClick = (e) => {
     let val = e.target.textContent;
+
+    console.log(lastOperation);
+
+    if (val === "C") {
+      setExp("0");
+      return;
+    }
+  
+    if (val === "BS") {
+      if(exp==="0"){
+        setExp("0");
+        return;
+      }
+      setExp(exp.substring(0, exp.length - 1));
+      setDeciFlag(exp);
+      return;
+    }
+  
+    if (val === "=") {
+      calculate(exp);
+      return;
+    }
 
     //replaces initial 0 with number
     if ((exp === "0" ) && !isNaN(value)) {
@@ -160,30 +179,10 @@ const Button = ({ value, className }) => {
       isPerformed = false;
     }
     
-
     //prevents repetation of operators by replacing the recent added operator
     // does not replaces decimal point(.)
     if (isNaN(val) && value != "." && isNaN(peek(exp)) && peek(exp) != ".") {
       setExp(trim(exp, 0));
-      return;
-    }
-
-    if (val === "C") {
-      setExp("0");
-      return;
-    }
-
-    if (val === "BS") {
-      if(exp==="0"){
-        setExp("0");
-        return;
-      }
-      setExp(exp.substring(0, exp.length - 1));
-      return;
-    }
-
-    if (val === "=") {
-      calculate(exp);
       return;
     }
 
