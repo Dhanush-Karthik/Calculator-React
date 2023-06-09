@@ -71,7 +71,7 @@ const Button = ({ value, className }) => {
   //performs operation
   const calculate = (exp) => {
     exp = exp.toString();
-    
+
     if (exp === "") {
       setExp("");
     }
@@ -181,7 +181,7 @@ const Button = ({ value, className }) => {
     //prevents repetation of operators by replacing the recent added operator
     // does not replaces decimal point(.)
     if (isNaN(val) && value != "." && isNaN(peek(exp)) && peek(exp) != ".") {
-      setExp(trim(exp, 0));
+      setExp(trim(exp, 1)+val);
       return;
     }
 
