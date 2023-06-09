@@ -3,13 +3,11 @@ import "./Button.css";
 import { ExpContext } from "../calculator/Calculator";
 
 const Button = ({ value, className }) => {
-  const { exp, setExp , lastOperation , setLastOperation, isPerformed, setPerformed} = useContext(ExpContext);
+  const { exp, setExp , lastOperation , setLastOperation, isPerformed, setPerformed, isDecimal, setDecimal} = useContext(ExpContext);
 
   useEffect(() => {
     setDeciFlag(exp);
   }, [exp]);
-
-  let isDecimal = false;
   
   const peek = (val) => {
     val = val.toString();
@@ -27,15 +25,15 @@ const Button = ({ value, className }) => {
     var i = val.length - 1;
     while (i >= 0 && val.charAt(i) != ".") {
       if(isNaN(val.charAt(i))){
-        isDecimal = false;
+        setDecimal(false);
         return;
       }
       i--;
     }
     if (i === -1) {
-      isDecimal = false;
+      setDecimal(false);
     } else {
-      isDecimal = true;
+      setDecimal(true);
     }
   }
 
@@ -174,7 +172,7 @@ const Button = ({ value, className }) => {
     //sets flag
     if (isNaN(val)) {
       setLastOperation("");
-      isDecimal = value === "." ? true : false;
+      setDecimal(value === "." ? true : false);
       setPerformed(false);
     }
     
