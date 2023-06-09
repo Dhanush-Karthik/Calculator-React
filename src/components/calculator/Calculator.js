@@ -5,9 +5,11 @@ import "./Calculator.css"
 export const ExpContext = createContext();
 const Calculator = () => {
     const [exp,setExp] = useState("0");
+    const [lastOperation, setLastOperation] = useState("");
+    const [isPerformed, setPerformed] = useState(false);
       
     return(
-        <ExpContext.Provider value={{exp,setExp}}>
+        <ExpContext.Provider value={{exp,setExp,lastOperation,setLastOperation,isPerformed,setPerformed}}>
             <div className="calculator">
                 Casio
                 <Display />

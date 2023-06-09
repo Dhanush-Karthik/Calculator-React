@@ -1,17 +1,14 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState} from "react";
 import "./Button.css";
 import { ExpContext } from "../calculator/Calculator";
 
 const Button = ({ value, className }) => {
-  const { exp, setExp } = useContext(ExpContext);
+  const { exp, setExp , lastOperation , setLastOperation, isPerformed, setPerformed} = useContext(ExpContext);
 
   useEffect(() => {
     setDeciFlag(exp);
-    console.log(isDecimal);
   }, [exp]);
 
-  let isPerformed = false;
-  let lastOperation = "";
   let isDecimal = false;
   
   const peek = (val) => {
@@ -73,32 +70,36 @@ const Button = ({ value, className }) => {
 
   //performs operation
   const calculate = (exp) => {
-
+    exp = exp.toString();
+    
     if (exp === "") {
       setExp("");
     }
 
-    while (isNaN(exp.charAt(exp.length - 1))) {
+    if (isNaN(exp.charAt(exp.length - 1))) {
       exp = exp.substring(0, exp.length - 1);
     }
-
+    
     if (!isPerformed) {
+      var temp = "";
       var i = exp.length - 1;
       while ((!isNaN(exp.charAt(i)) || exp.charAt(i) === ".") && i >= 0) {
-        lastOperation = exp.charAt(i--) + lastOperation;
+        temp = exp.charAt(i--) + temp;
       }
-      lastOperation = exp.charAt(i) + lastOperation;
+      temp = exp.charAt(i) + temp;
+      console.log('working: '+temp);
+      setLastOperation(temp);
     }
 
-    if (!isNaN(lastOperation.charAt(0)) || lastOperation.charAt(0) === ".") {
-      lastOperation = "";
+    if (lastOperation.charAt(0)!="" && (!isNaN(lastOperation.charAt(0)) || lastOperation.charAt(0) === ".")) {
+      setLastOperation("");
     }
 
     if (isPerformed) {
       exp += lastOperation;
     }
 
-    isPerformed = true;
+    setPerformed(true);
     var op = [];
     var values = [];
 
@@ -132,8 +133,6 @@ const Button = ({ value, className }) => {
 
   const handleClick = (e) => {
     let val = e.target.textContent;
-
-    console.log(lastOperation);
 
     if (val === "C") {
       setExp("0");
@@ -174,9 +173,9 @@ const Button = ({ value, className }) => {
     
     //sets flag
     if (isNaN(val)) {
-      lastOperation = "";
+      setLastOperation("");
       isDecimal = value === "." ? true : false;
-      isPerformed = false;
+      setPerformed(false);
     }
     
     //prevents repetation of operators by replacing the recent added operator
