@@ -17,6 +17,10 @@ const Display = () => {
     return exp.substring(0, exp.length - 1).charAt(exp.length - 2);
   }
 
+  const isOperator = (value) => {
+    return value==="+" || value==='-' || value==='*' || value==='/' || value==='%';
+  }
+
   let handleInput = (e) => {
     let temp = e.target.value;
     var rpattern = /^(-|-?\d+|-?\d+\.|-?\d+\.\d+|-?\d+(\.\d+)?[+\-/%*]|(-?\d+(\.\d+)?[+\-/%*])+-|(-?\d+(\.\d+)?[+\-/%*])+-?\d+|(-?\d+(\.\d+)?[+\-/%*])+-?\d+\.|(-?\d+(\.\d+)?[+\-/%*])+-?\d+\.\d+|(-?\d+(\.\d+)?[+\-/%*])+-?\d+(\.\d+)?[+\-/%*])$/;
@@ -32,16 +36,16 @@ const Display = () => {
       if(mpeek(temp)==='.'){
         temp = trim(temp,1)+'0'+value;
       }
-      if(value!=='-' && (mpeek(temp)==='+'|| mpeek(temp)==='-'|| mpeek(temp)==='/'|| mpeek(temp)==='*'|| peek(temp)==='%')){
+      if(value!=='-' && isOperator(mpeek(temp)==='+')){
          temp = trim(temp,2)+value;
       }
     }
     if(value==='.'){
-      if(mpeek(temp)==='+'|| mpeek(temp)==='-'|| mpeek(temp)==='/'|| mpeek(temp)==='*'|| peek(temp)==='%'){
+      if(isOperator(mpeek(temp))){
         temp = trim(temp,1)+'0'+value;
       }
     }
-    if(isNaN(mpeek(temp)) && isNaN(value) && (value==='+' || value==='/' || value==='*') && value!=='-' && value!=='.'){
+    if(isNaN(mpeek(temp)) && isNaN(value) && (value==='+' || value==='/' || value==='*' || value=='%') && value!=='-' && value!=='.'){
         temp = trim(temp,2)+value;
         setPrevExp(temp);
         return;

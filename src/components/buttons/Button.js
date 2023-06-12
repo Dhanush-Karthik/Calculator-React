@@ -14,6 +14,9 @@ const Button = ({ value, className }) => {
     return value.substring(0, value.length - lim);
   };
 
+  const isOperator = (value) => {
+    return value==="+" || value==='-' || value==='*' || value==='/' || value==='%';
+  }
   //Evaluates the expression
   //checks precedence of the operator
   const hasPrecedence = (op1, op2) => {
@@ -143,7 +146,7 @@ const Button = ({ value, className }) => {
     }
 
     if(value==='.'){
-      if(peek(temp)==="+" || peek(temp)==='-' || peek(temp)==='*' || peek(temp)==='/' || peek(temp)==='%'){
+      if(isOperator(peek(temp))){
         setExp(temp+"0"+value)
       }
     }
@@ -153,7 +156,7 @@ const Button = ({ value, className }) => {
       return;
     }
 
-    if(value==="+" || value==='-' || value==='*' || value==='/' || value==='%'){
+    if(isOperator(value)){
       setLastOperation("");
       setPerformed(false);
 
