@@ -3,7 +3,7 @@ import "./Button.css";
 import { ExpContext } from "../calculator/Calculator";
 
 const Button = ({ value, className }) => {
-  const {exp, setExp, lastOperation, setLastOperation, isPerformed, setPerformed, setPrevExp,calculate,} = useContext(ExpContext);
+  const {exp, setExp, setLastOperation, setPerformed, setPrevExp,calculate,} = useContext(ExpContext);
 
   const peek = (value) => {
     value = value.toString();
@@ -20,29 +20,25 @@ const Button = ({ value, className }) => {
 
   const handleClick = (e) => {
     let value = e.target.textContent;
-    temp = exp.toString();
+    var temp = exp.toString();
 
     if (value === "C") {
-      setExp("0");
-      return;
+      temp = "0";
     }
     
     if (value === "BS") {
       if (temp === "0") {
-        setExp("0");
-        return;
+        temp = "0";
       }
-      setExp(temp.substring(0, temp.length - 1));
-      return;
+      temp = temp.substring(0, temp.length - 1);
     }
 
     if(value==='.' && isOperator(peek(temp))){
-      setExp(temp+"0"+value)
+      temp = temp+"0"+value;
     }
 
     if(value==='-' && peek(temp)==='-' && !isNaN(peek(trim(temp,1)))){
-      setExp(trim(temp,1)+'+');
-      return;
+      temp = trim(temp,1)+'+';
     }
 
     if(isOperator(value)){
@@ -50,17 +46,17 @@ const Button = ({ value, className }) => {
       setPerformed(false);
 
       if(peek(temp)==='.'){
-        setExp(temp+"0"+value);
-        return;
+        temp = temp+"0"+value;
       }
     }
-    
+    setExp(temp.toString());
+
     if (value === "=") {
-      calculate(exp);
+      calculate(temp);
       return;
     }
     
-    var temp = exp;
+    
     var rpattern =/^(-|-?\d+|-?\d+\.|-?\d+\.\d+|-?\d+(\.\d+)?[+\-/%*]|(-?\d+(\.\d+)?[+\-/%*])+-|(-?\d+(\.\d+)?[+\-/%*])+-?\d+|(-?\d+(\.\d+)?[+\-/%*])+-?\d+\.|(-?\d+(\.\d+)?[+\-/%*])+-?\d+\.\d+|(-?\d+(\.\d+)?[+\-/%*])+-?\d+(\.\d+)?[+\-/%*])$/;
     if (temp === "0") {
       temp = "";

@@ -46,7 +46,7 @@ const Display = () => {
     if(value==='.' && isOperator(mpeek(temp))){
         temp = trim(temp,1)+'0'+value;
     }
-    if(isNaN(mpeek(temp)) && isNaN(value) && (value==='+' || value==='/' || value==='*' || value=='%') && value!=='-' && value!=='.'){
+    if(isNaN(mpeek(temp)) && isNaN(value) && (value==='+' || value==='/' || value==='*' || value==='%') && value!=='-' && value!=='.'){
         temp = trim(temp,2)+value;
         setPrevExp(temp);
         return;
