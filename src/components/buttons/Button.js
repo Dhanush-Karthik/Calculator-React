@@ -6,7 +6,6 @@ const Button = ({ value, className }) => {
   const {exp, setExp, setLastOperation, setPerformed, setPrevExp,calculate,} = useContext(ExpContext);
 
   const peek = (value) => {
-    value = value.toString();
     return value.charAt(value.length - 1);
   };
 
