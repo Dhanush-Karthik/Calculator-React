@@ -4,19 +4,19 @@ import "./NumberPad.css";
 let keys = [
   {
     value: "C",
-    class: "number-pad-item number-pad-item-spl",
+    class: "number-pad-item spl",
   },
   {
     value: "BS",
-    class: "number-pad-item number-pad-item-spl",
+    class: "number-pad-item spl",
   },
   {
     value: "%",
-    class: "number-pad-item number-pad-item-op",
+    class: "number-pad-item op",
   },
   {
     value: "/",
-    class: "number-pad-item number-pad-item-op",
+    class: "number-pad-item op",
   },
   {
     value: "7",
@@ -32,7 +32,7 @@ let keys = [
   },
   {
     value: "*",
-    class: "number-pad-item number-pad-item-op",
+    class: "number-pad-item op",
   },
   {
     value: "4",
@@ -48,7 +48,7 @@ let keys = [
   },
   {
     value: "-",
-    class: "number-pad-item number-pad-item-op",
+    class: "number-pad-item op",
   },
   {
     value: "1",
@@ -64,11 +64,11 @@ let keys = [
   },
   {
     value: "+",
-    class: "number-pad-item number-pad-item-op",
+    class: "number-pad-item op",
   },
   {
     value: "0",
-    class: "number-pad-item number-pad-item-unique",
+    class: "number-pad-item unique",
   },
   {
     value: ".",
@@ -76,7 +76,7 @@ let keys = [
   },
   {
     value: "=",
-    class: "number-pad-item number-pad-item-op",
+    class: "number-pad-item op",
   },
 ];
 

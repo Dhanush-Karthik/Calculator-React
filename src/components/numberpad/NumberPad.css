@@ -25,7 +25,6 @@
 .number-pad-0{
     width: 110px;
     display: flex;
-    /* margin-left: 10px; */
 }
 .number-pad-dot{
     margin-left: 10px;
@@ -33,14 +32,14 @@
 .number-pad-equal{
     margin-left: 10px;
 }
-.number-pad-item-spl{
+.spl{
     background-color: gray;
 }
-.number-pad-item-op{
+.op{
     background-color: rgb(33, 147, 241);
 }
 
-.number-pad-item-unique{
+.unique{
 
     grid-column-start: 1;
     grid-column-end: 3;
