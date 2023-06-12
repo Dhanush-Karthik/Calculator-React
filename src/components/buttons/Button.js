@@ -31,6 +31,7 @@ const Button = ({ value, className }) => {
         temp = "0";
       }
       temp = temp.substring(0, temp.length - 1);
+      setPrevExp(temp);
     }
 
     if(value==='.' && isOperator(peek(temp))){
