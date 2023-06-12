@@ -17,8 +17,7 @@ const Button = ({ value, className }) => {
   const isOperator = (value) => {
     return value==="+" || value==='-' || value==='*' || value==='/' || value==='%';
   }
-  //Evaluates the expression
-  //checks precedence of the operator
+
   const hasPrecedence = (op1, op2) => {
     if (op2 === "%") {
       return "true";
@@ -27,7 +26,6 @@ const Button = ({ value, className }) => {
     else return true;
   };
 
-  //performs actual operation
   const perform = (op, val1, val2) => {
     val1 = parseFloat(val1);
     val2 = parseFloat(val2);
@@ -91,7 +89,7 @@ const Button = ({ value, className }) => {
 
     for (i = 0; i < exp.length; i++) {
 
-      if (exp.charAt(i) === "-" && ((i === 0 && exp.charAt(0) === "-") || isNaN(exp.charAt(i - 1)))) {
+      if (exp.charAt(i) === "-" && (i === 0  || isNaN(exp.charAt(i - 1)))) {
         temp = "-";
         i++;
 
@@ -145,10 +143,8 @@ const Button = ({ value, className }) => {
       return;
     }
 
-    if(value==='.'){
-      if(isOperator(peek(temp))){
-        setExp(temp+"0"+value)
-      }
+    if(value==='.' && isOperator(peek(temp))){
+      setExp(temp+"0"+value)
     }
 
     if(value==='-' && peek(temp)==='-' && !isNaN(peek(trim(temp,1)))){

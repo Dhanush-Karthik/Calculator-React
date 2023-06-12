@@ -33,17 +33,18 @@ const Display = () => {
     if(value==='+'||value==='-'||value==='*'||value==='/'||value==='%'){
       setLastOperation("");
       setPerformed(false);
+
       if(mpeek(temp)==='.'){
         temp = trim(temp,1)+'0'+value;
       }
+
       if(value!=='-' && isOperator(mpeek(temp)==='+')){
          temp = trim(temp,2)+value;
       }
     }
-    if(value==='.'){
-      if(isOperator(mpeek(temp))){
+
+    if(value==='.' && isOperator(mpeek(temp))){
         temp = trim(temp,1)+'0'+value;
-      }
     }
     if(isNaN(mpeek(temp)) && isNaN(value) && (value==='+' || value==='/' || value==='*' || value=='%') && value!=='-' && value!=='.'){
         temp = trim(temp,2)+value;
@@ -67,11 +68,10 @@ const Display = () => {
       setExp("");
     }
   }
+  
   const handleKeyDown=(e)=>{
-    if(e.code==="Backspace"){
-      if(exp.length==1){
+    if(e.code==="Backspace" && exp.length===1){
         setExp("");
-      }
     }
   }
 
