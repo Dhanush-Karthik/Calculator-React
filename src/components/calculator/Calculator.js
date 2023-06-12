@@ -77,12 +77,11 @@ const Calculator = () => {
     if (isPerformed) {
       exp += lastOperation;
     }
-    setPerformed(true);
 
+    setPerformed(true);
 
     var op = [];
     var values = [];
-
     for (i = 0; i < exp.length; i++) {
 
       if (exp.charAt(i) === "-" && (i === 0  || isNaN(exp.charAt(i - 1)))) {
@@ -122,7 +121,7 @@ const Calculator = () => {
   };
 
   const dependencies = {exp, setExp, lastOperation, setLastOperation, isPerformed, setPerformed, prevExp, setPrevExp,calculate};
-  
+
   return (
     <ExpContext.Provider
       value={dependencies}

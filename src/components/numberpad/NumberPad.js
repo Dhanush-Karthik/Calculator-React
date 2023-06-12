@@ -1,7 +1,5 @@
-import { useContext } from "react";
 import Button from "../buttons/Button";
 import "./NumberPad.css";
-import { ExpContext } from "../calculator/Calculator";
 
 let keys = [
   {
@@ -83,16 +81,13 @@ let keys = [
 ];
 
 let NumberPad = () => {
-  let { exp, setExp } = useContext(ExpContext);
 
   return (
-    <div>
       <div className="number-pad">
         {keys.map((key, index) => {
           return <Button key={index} value={key.value} className={key.class} />;
         })}
       </div>
-    </div>
   );
 };
 
