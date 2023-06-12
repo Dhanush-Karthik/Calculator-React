@@ -76,7 +76,6 @@ const Display = () => {
     if(e.code==="Enter"){
       calculate(exp);
     }
-    console.log(e.code);
   }
 
   return <input className="display" value={exp} onKeyDown={handleKeyDown} onInput={handleInput} onClick={handleClick}/>;
