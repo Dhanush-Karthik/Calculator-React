@@ -30,7 +30,7 @@ const Display = () => {
       temp = trim(temp,2)+'+';
     }
 
-    if(value==='+'||value==='-'||value==='*'||value==='/'||value==='%'){
+    if(isOperator(value)){
       setLastOperation("");
       setPerformed(false);
 
@@ -38,7 +38,7 @@ const Display = () => {
         temp = trim(temp,1)+'0'+value;
       }
 
-      if(value!=='-' && isOperator(mpeek(temp)==='+')){
+      if(value!=='-' && isOperator(mpeek(temp))){
          temp = trim(temp,2)+value;
       }
     }
