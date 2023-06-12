@@ -5,15 +5,15 @@ import { ExpContext } from "../calculator/Calculator";
 const Display = () => {
   let {exp, setExp, prevExp, setPrevExp, setLastOperation, setPerformed, calculate} = useContext(ExpContext);
 
-  function peek(val) {
+  const peek = (val) => {
     return val.charAt(val.length - 1);
   }
 
-  function trim(val, lim) {
+  const trim = (val, lim) => {
     return val.substring(0, val.length - lim);
   }
 
-  function mpeek(exp) {
+  const mpeek = (exp) => {
     return exp.substring(0, exp.length - 1).charAt(exp.length - 2);
   }
 
