@@ -3,7 +3,7 @@ import "./Display.css";
 import { ExpContext } from "../calculator/Calculator";
 
 const Display = () => {
-  let {exp, setExp, prevExp, setPrevExp, setLastOperation, setPerformed} = useContext(ExpContext);
+  let {exp, setExp, prevExp, setPrevExp, setLastOperation, setPerformed, calculate} = useContext(ExpContext);
 
   function peek(val) {
     return val.charAt(val.length - 1);
@@ -68,11 +68,15 @@ const Display = () => {
       setExp("");
     }
   }
-  
+
   const handleKeyDown=(e)=>{
     if(e.code==="Backspace" && exp.length===1){
         setExp("");
     }
+    if(e.code==="Enter"){
+      calculate(exp);
+    }
+    console.log(e.code);
   }
 
   return <input className="display" value={exp} onKeyDown={handleKeyDown} onInput={handleInput} onClick={handleClick}/>;
