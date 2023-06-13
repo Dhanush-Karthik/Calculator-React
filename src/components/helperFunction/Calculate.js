@@ -63,51 +63,54 @@ const peek = (value) => {
     if (!isNaN(temp.charAt(0)) || temp.charAt(0) === ".") {
       setLastOperation("");
     }
-
+    temp = exp.toString();
     if (isPerformed) {
       temp = exp + lastOperation;
     }
+    console.log("Updated: "+temp +"Actual: "+ exp);
 
     setPerformed(true);
 
     var op = [];
     var values = [];
-    for (i = 0; i < exp.length; i++) {
+    for (i = 0; i < temp.length; i++) {
 
-      if (exp.charAt(i) === "-" && (i === 0  || isNaN(exp.charAt(i - 1)))) {
-        temp = "-";
+      if (temp.charAt(i) === "-" && (i === 0  || isNaN(temp.charAt(i - 1)))) {
+        var temp1 = "-";
         i++;
 
-        while (i <= exp.length && (!isNaN(exp.charAt(i)) || exp.charAt(i) === ".")) {
-          temp += exp.charAt(i++);
+        while (i <= temp.length && (!isNaN(temp.charAt(i)) || temp.charAt(i) === ".")) {
+          temp1 += temp.charAt(i++);
         }
-
-        values.push(temp);
+        console.log(temp1);
+        values.push(temp1);
         i--;
       } 
-      else if (!isNaN(exp.charAt(i))) {
-        temp = "";
-
-        while (i <= exp.length && (!isNaN(exp.charAt(i)) || exp.charAt(i) === ".")) {
-          temp += exp.charAt(i++);
+      else if (!isNaN(temp.charAt(i))) {
+        temp1 = "";
+        
+        while (i <= temp.length && (!isNaN(temp.charAt(i)) || temp.charAt(i) === ".")) {
+          temp1 += temp.charAt(i++);
         }
-
-        values.push(temp);
+        
+        console.log(temp1);
+        values.push(temp1);
         i--;
       } 
-      else if (isNaN(exp.charAt(i))) {
-        while (op.length !== 0 && hasPrecedence(exp.charAt(i), op[op.length - 1])) {
+      else if (isNaN(temp.charAt(i))) {
+        while (op.length !== 0 && hasPrecedence(temp.charAt(i), op[op.length - 1])) {
           values.push(perform(op.pop(), values.pop(), values.pop()));
         }
-        op.push(exp.charAt(i));
+        console.log(temp.charAt(i));
+        op.push(temp.charAt(i));
       }
     }
 
     while (op.length !== 0) {
       values.push(perform(op.pop(), values.pop(), values.pop()));
     }
-    setExp(values.pop());
-    setPrevExp(exp.toString());
+    setExp(values.pop().toString());
+    setPrevExp(temp.toString());
   };
 
   export default Calculate;

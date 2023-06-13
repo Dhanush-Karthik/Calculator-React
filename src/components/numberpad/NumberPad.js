@@ -4,11 +4,11 @@ import "./NumberPad.css";
 let keys = [
   {
     value: "C",
-    class: " spl",
+    class: "spl",
   },
   {
     value: "BS",
-    class: " spl",
+    class: "spl",
   },
   {
     value: "%",
