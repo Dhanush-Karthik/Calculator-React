@@ -105,12 +105,14 @@ const peek = (value) => {
         op.push(temp.charAt(i));
       }
     }
-
+    var res;
     while (op.length !== 0) {
-      values.push(perform(op.pop(), values.pop(), values.pop()));
+      res = perform(op.pop(), values.pop(), values.pop())
+      values.push(res);
     }
     setExp(values.pop().toString());
-    setPrevExp(temp.toString());
+    setPrevExp(res.toString());
+    console.log(temp);
   };
 
   export default Calculate;
