@@ -38,39 +38,44 @@ const peek = (value) => {
     if (temp === "") {
       setExp("");
     }
-
-    while (isNaN(peek(exp))) {
-      temp = temp.substring(0, exp.length - 1);
+    
+    while (isNaN(peek(temp))) {
+      temp = temp.substring(0, temp.length - 1);
     }
-
+    
+    if(!isNaN(temp)){
+      setExp(temp);
+      return;
+    }
+    
     //last operation not working!!!
-    temp = lastOperation;
-
+    var tem = lastOperation;
+    
     if (!isPerformed) {
       var i = exp.length - 1;
-
+      
       while ((!isNaN(exp.charAt(i)) || exp.charAt(i) === "." || exp.charAt(i)==='-') && i >= 0) {
         if(exp.charAt(i)==='-' && !isNaN(exp.charAt(i-1))){
           break;
         }
-        temp = exp.charAt(i--) + temp;
+        tem = exp.charAt(i--) + tem;
       }
-
-      temp = exp.charAt(i) + temp;
-      setLastOperation(temp);
+      
+      tem = exp.charAt(i) + tem;
+      setLastOperation(tem);
     }
-
-    if (!isNaN(temp.charAt(0)) || temp.charAt(0) === ".") {
+    
+    if (!isNaN(tem.charAt(0)) || tem.charAt(0) === ".") {
       setLastOperation("");
     }
-    temp = exp.toString();
+    
     if (isPerformed) {
       temp = exp + lastOperation;
     }
-    console.log("Updated: "+temp +"Actual: "+ exp);
-
+    
     setPerformed(true);
-
+    
+    console.log("Updated: "+temp +" Actual: "+ exp);
     var op = [];
     var values = [];
     for (i = 0; i < temp.length; i++) {
@@ -121,6 +126,7 @@ const peek = (value) => {
       values.push(res);
     }
     setExp(values.pop().toString());
+    console.log(res);
     setPrevExp(res.toString());
     console.log(temp);
   };
