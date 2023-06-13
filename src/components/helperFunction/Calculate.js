@@ -92,7 +92,6 @@ const peek = (value) => {
           }
           temp1 += temp.charAt(i++);
         }
-        console.log(temp1);
         values.push(temp1);
         i--;
       } 
@@ -108,7 +107,7 @@ const peek = (value) => {
           temp1 += temp.charAt(i++);
         }
         
-        console.log(temp1);
+
         values.push(temp1);
         i--;
       } 
@@ -116,7 +115,7 @@ const peek = (value) => {
         while (op.length !== 0 && hasPrecedence(temp.charAt(i), op[op.length - 1])) {
           values.push(perform(op.pop(), values.pop(), values.pop()));
         }
-        console.log(temp.charAt(i));
+        
         op.push(temp.charAt(i));
       }
     }
