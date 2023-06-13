@@ -42,8 +42,8 @@ const peek = (value) => {
     while (isNaN(peek(temp))) {
       temp = temp.substring(0, temp.length - 1);
     }
-    
-    if(!isNaN(temp)){
+
+    if(!isNaN(temp) && !isPerformed){
       setExp(temp);
       return;
     }
@@ -70,7 +70,7 @@ const peek = (value) => {
     }
     
     if (isPerformed) {
-      temp = exp + lastOperation;
+      temp = temp + lastOperation;
     }
     
     setPerformed(true);
@@ -126,9 +126,7 @@ const peek = (value) => {
       values.push(res);
     }
     setExp(values.pop().toString());
-    console.log(res);
     setPrevExp(res.toString());
-    console.log(temp);
   };
 
   export default Calculate;
