@@ -88,7 +88,6 @@ const peek = (value) => {
           if(temp.charAt(i)==="e"){
             temp1+="e+";
             i+=2;
-            continue;
           }
           temp1 += temp.charAt(i++);
         }
