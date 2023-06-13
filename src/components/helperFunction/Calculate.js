@@ -79,7 +79,12 @@ const peek = (value) => {
         var temp1 = "-";
         i++;
 
-        while (i <= temp.length && (!isNaN(temp.charAt(i)) || temp.charAt(i) === ".")) {
+        while (i <= temp.length && (!isNaN(temp.charAt(i)) || temp.charAt(i) === "." || temp.charAt(i)==="e")) {
+          if(temp.charAt(i)==="e"){
+            temp1+="e+";
+            i+=2;
+            continue;
+          }
           temp1 += temp.charAt(i++);
         }
         console.log(temp1);
@@ -89,7 +94,12 @@ const peek = (value) => {
       else if (!isNaN(temp.charAt(i))) {
         temp1 = "";
         
-        while (i <= temp.length && (!isNaN(temp.charAt(i)) || temp.charAt(i) === ".")) {
+        while (i <= temp.length && (!isNaN(temp.charAt(i)) || temp.charAt(i) === "." || temp.charAt(i)==="e")) {
+          if(temp.charAt(i)==="e"){
+            temp1+="e+";
+            i+=2;
+            continue;
+          }
           temp1 += temp.charAt(i++);
         }
         
