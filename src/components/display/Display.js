@@ -7,20 +7,11 @@ import HandleClick from "../helperFunction/HandleClick";
 
 const Display = () => {
   let data = useContext(ExpContext);
-
-  const handleInput = (e) => {
-    HandleDisplay(e,data);
-  };
-
-  const handleKeyDown=(e)=>{
-    HandleKeyDown(e,data);
-  };
-
-  let handleClick = (e)=>{
-    HandleClick(e,data);
-  }
   
-  return <input className="display" value={data.exp} onKeyDown={handleKeyDown} onInput={handleInput} onClick={handleClick}/>;
+  return <input className="display" value={data.exp} 
+    onKeyDown={(e)=>HandleKeyDown(e,data)} 
+    onInput={(e)=>HandleDisplay(e,data)} 
+    onClick={(e)=>HandleClick(e,data)}/>;
 };
 
 export default Display;

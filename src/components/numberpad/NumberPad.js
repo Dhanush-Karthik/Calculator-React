@@ -12,11 +12,11 @@ let keys = [
   },
   {
     value: "%",
-    class: " op",
+    class: "op",
   },
   {
     value: "/",
-    class: " op",
+    class: "op",
   },
   {
     value: "7",
@@ -29,7 +29,7 @@ let keys = [
   },
   {
     value: "*",
-    class: " op",
+    class: "op",
   },
   {
     value: "4",
@@ -42,7 +42,7 @@ let keys = [
   },
   {
     value: "-",
-    class: " op",
+    class: "op",
   },
   {
     value: "1",
@@ -55,18 +55,18 @@ let keys = [
   },
   {
     value: "+",
-    class: " op",
+    class: "op",
   },
   {
     value: "0",
-    class: " unique",
+    class: "unique",
   },
   {
     value: ".",
   },
   {
     value: "=",
-    class: " op",
+    class: "op",
   },
 ];
 
@@ -79,7 +79,7 @@ let NumberPad = () => {
           <Button
             key={index}
             value={key.value}
-            className={(key.class) ? "number-pad-item"+key.class : "number-pad-item"}
+            className={key.class}
           />
         );
       })}
